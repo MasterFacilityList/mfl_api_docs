@@ -11,7 +11,7 @@ can ensure that the facilties are registered with the MFL.
 The synchronization process:
 ++++++++++++++++++++++++++++++++
 
-**The synchronization resource has the following **important** fields**
+The regulator synchronization resource has the following **important** fields:
 
 =================== ============= ========================================================
 Field                 Required      Explanation
