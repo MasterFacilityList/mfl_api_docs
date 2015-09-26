@@ -183,7 +183,7 @@ Expected Response Code:
 Step 2
 +++++++++++++
 Once a facility synchrionization has been initiated, the request to register a faciility will appear on the concerned CHRIO's dashboard.
-Once the the facility has been registered with the MFL the mfl_code will be field and the RHRIS can now pull and get a facilities mfl_code.
+On registration of the facility with the MFL the mfl_code will be field and the RHRIS can now pull and get a facility's mfl_code.
 
 Listing of synchronized facilities
 ----------------------------------
