@@ -32,4 +32,5 @@ Developers guide
     13_gis
     14_workflow
     15_code_of_conduct
+    16_regulator_synchronization
 
