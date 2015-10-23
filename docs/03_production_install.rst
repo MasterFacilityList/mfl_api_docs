@@ -53,7 +53,7 @@ A proper ``.env`` file should set the following values up:
     HTTPS_ENABLED=True # ** Set to true if HTTPS will be used
     AWS_ACCESS_KEY_ID=<AWS access key>
     AWS_SECRET_ACCESS_KEY=<AWS secret key>
-    AWS_STORAGE_BUCKET_NAME=<AWS buckket name>
+    AWS_STORAGE_BUCKET_NAME=<AWS bucket name>
     STORAGE_BACKEND=<storage backend e.g storages.backends.s3boto.S3BotoStorage>
 
 .. _Twelve-Factor App: http://12factor.net/
