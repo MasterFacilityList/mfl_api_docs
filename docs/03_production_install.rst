@@ -97,6 +97,26 @@ The template breaks down roughly to this:
 
     The SSH private key must be kept private.
 
+In the **site.yml** file inside the playbooks folder ensure that the relevant variables are updated e.g
+
+.. code-block :: text
+
+        load_demo_data: false , //set to true if demonstration data needs to be loaded
+        warm_cache: false, // set this to true if the cache needs to be refreshed
+        server_url: "https://testdomain.com, //THe API-server URL
+        username: <Public user username>
+        password: <public password>,
+        client_id: <OAUTH client id for the public user >,
+        client_secret:<OAUTH client secret for the public user>
+
+Once all the deployment attributes have been set, cd into the playbooks folder and run the command below:
+
+    ``ansible-playbook --tags='api-server' site.yml``
+
+
+The above command deploys the API code, setups nginx, supervisor and the firewall. The API server should be available online, from the server URL provided during deployment, once the command has finished executing.
+
+
 .. warning::
 
     If you are working off a recent Ubuntu Linux on your laptop, you should
