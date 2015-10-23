@@ -3,9 +3,7 @@ Installing for production
 This server has been developed and tested on `Ubuntu`_ Linux ( any Ubuntu
 that is currently "in support" will do ). It should be *trivial* to get it
 working on any ``*NIX`` ( including OS X ). It is *possible* to get it
-running on Windows, but we have not put any work into it. If you've got a
-burning desire to see the server running on Windows, you are encouraged to
-test it there and issue pull requests for any fixes that would be needed.
+running on Windows. 
 
 Kindly note that this restriction applies to the servers only, and not to
 any of the API clients e.g browsers and third party systems. Clients can
