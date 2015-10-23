@@ -97,7 +97,7 @@ The template breaks down roughly to this:
 
     The SSH private key must be kept private.
 
-In the **site.yml** file inside the playbooks folder ensure that the relevant variables are updated e.g
+In the ``site.yml`` file inside the ``playbooks`` folder ensure that the relevant variables are updated e.g
 
 .. code-block :: text
 
