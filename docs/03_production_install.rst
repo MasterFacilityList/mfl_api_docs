@@ -2,8 +2,7 @@ Installing for production
 ============================
 This server has been developed and tested on `Ubuntu`_ Linux ( any Ubuntu
 that is currently "in support" will do ). It should be *trivial* to get it
-working on any ``*NIX`` ( including OS X ). It is *possible* to get it
-running on Windows. 
+working on any ``*NIX`` ( including OS X ).
 
 Kindly note that this restriction applies to the servers only, and not to
 any of the API clients e.g browsers and third party systems. Clients can
@@ -49,7 +48,13 @@ A proper ``.env`` file should set the following values up:
 
     # Location where the administration frontend is running
     FRONTEND_URL='http://localhost:8062'
-
+    DEBUG=False
+    REALTIME_INDEX=True  # ** set to true to update the search index in realtime**
+    HTTPS_ENABLED=True # ** Set to true if HTTPS will be used
+    AWS_ACCESS_KEY_ID=<AWS access key>
+    AWS_SECRET_ACCESS_KEY=<AWS secret key>
+    AWS_STORAGE_BUCKET_NAME=<AWS buckket name>
+    STORAGE_BACKEND=<storage backend e.g storages.backends.s3boto.S3BotoStorage>
 
 .. _Twelve-Factor App: http://12factor.net/
 
