@@ -97,6 +97,36 @@ The template breaks down roughly to this:
 
     The SSH private key must be kept private.
 
+In the site.yml file ensure that the relevant variables are updated e.g
+
+.. code-block :: text
+
+        mfl_public_web_version: "0.0.1a13" //set to the version of public website that should be deployed
+        mfl_admin_web_version: "0.0.1a21" //set version of the administration site to be deployed
+        has_ssl: true // set this to true if the site should run on HTTPs
+        cert_file: "" // Give the location of the HTTPS certificate file
+        key_file: "" // Give the location of the HTTPS key file
+        public_web_server_name: "public.test_domain.com" //The public website URL
+        admin_web_server_name: "public.test_domain.com" //The administration website URL
+
+        load_demo_data: false , //set to true if demonstration data needs to be loaded
+        warm_cache: false, // set this to true if the cache needs to be refreshed
+        server_url: "https://testdomain.com, //THe API-server URL
+        username: <Public user username>
+        password: <public password>,
+        client_id: <OAUTH client id for the public user >,
+        client_secret:<OAUTH client secret for the public user>
+
+Once all the deployment attributes have been set, cd into the playbooks folder and run the command below:
+
+    ``ansible-playbook  site.yml``
+
+
+The above command deploys the API code, setups nginx, supervisor and the firewall.
+The API server, the public website and the admin website should be available online,
+from the URLs  provided in the site.yml file, once the command has finished executing.
+
+
 .. warning::
 
     If you are working off a recent Ubuntu Linux on your laptop, you should
