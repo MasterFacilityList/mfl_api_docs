@@ -188,7 +188,7 @@ On registration of the facility with the MFL the mfl_code will be field and the 
 Listing of synchronized facilities
 ----------------------------------
 
-To list the facilities requested do a ``GET`` to the URL ``api/facilities/regulatory_sync/``
+To list the facilities requested do a ``GET`` to the URL ``api/facilities/regulator_sync/``
 
 Sample Expected Result:
 
