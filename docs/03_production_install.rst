@@ -117,14 +117,13 @@ In the site.yml file ensure that the relevant variables are updated e.g
         client_id: <OAUTH client id for the public user >,
         client_secret:<OAUTH client secret for the public user>
 
-Once all the deployment attributes have been set, cd into the playbooks folder and run the command below:
+Once all the deployment attributes have been set, **cd** into the **playbooks** folder and run the command below:
 
     ``ansible-playbook  site.yml``
 
 
-The above command deploys the API code, setups nginx, supervisor and the firewall.
-The API server, the public website and the admin website should be available online,
-from the URLs  provided in the site.yml file, once the command has finished executing.
+It deploys the API server, the public website and the administration website and they should be available
+from the URLs  provided in the site.yml file once the command has finished executing.
 
 
 .. warning::

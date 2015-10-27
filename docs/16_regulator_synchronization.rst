@@ -1,15 +1,26 @@
 Regulator Synchronization
-================================
+========================== 
+Regulator synchronization is divided into two sections:
+    #. :ref:`part_1-label`
+    #. :ref:`part_2-label` 
 
-This is for facilities that are initially created in the RHRIS system and
+.. _part_1-label:
+
+Part 1: Attached Facilities Synchronization
++++++++++++++++++++++++++++++++++++++++++++
+Attached facilities are those facilities that offer specialized health services 
+such as pharmaceutical services, laboratory services, opthalmology services, physiotherapy
+services etc besides offering other general health services.
+
+This is for **Attached facilities** that are initially created in the RHRIS system and
 do not have a master facility code assigned to them.
 This endpoint provides a way to enable the regulatory system to notify
 the master facility list(MFL) that there are facilities that have
 been registered and they are not in the MFL. After which the concerned officer (CHRIO)
-can ensure that the facilties are registered with the MFL.
+can ensure that the facilities are registered with the MFL.
 
 The synchronization process:
-++++++++++++++++++++++++++++++++
+-----------------------------
 
 The regulator synchronization resource has the following **important** fields:
 
@@ -84,7 +95,7 @@ Expected Response code:
 
 **Obtaining the facility type ids**
 
-The facility types's ids can be obtained by doing a **GET** to the **URL** ``api/facilities/facility_types/``
+The facility type's ids can be obtained by doing a **GET** to the **URL** ``api/facilities/facility_types/``
 Sample Expected Result
 
  .. code-block:: javascript
@@ -136,10 +147,10 @@ Sample Expected Result
 
 
 Step 1
-+++++++++++++
+-------
 First the regulator system posts to MFL the details of the facilities
 that have been created in the RHIS and are not in the MFL.
-To do this do a ``POST`` to ``api/facilitiess/regulator_sync/`` a payload similiar to the one below:
+To do this do a ``POST`` to ``api/facilitiess/regulator_sync/`` a payload similar to the one below:
 
  .. code-block:: javascript
 
@@ -181,8 +192,8 @@ Expected Response Code:
 
 
 Step 2
-+++++++++++++
-Once a facility synchrionization has been initiated, the request to register a faciility will appear on the concerned CHRIO's dashboard.
+--------
+Once a facility synchronization has been initiated, the request to register a facility will appear on the concerned CHRIO's dashboard.
 On registration of the facility with the MFL the mfl_code will be field and the RHRIS can now pull and get a facility's mfl_code.
 
 Listing of synchronized facilities
@@ -263,6 +274,163 @@ Sample Expected Result:
             }
         ]
     }
+
+
+.. _part_2-label:
+
+Part 2: Stand Alone Facilities Synchronization
+++++++++++++++++++++++++++++++++++++++++++++++
+Stand alone facilities are those facilities that offer only one specialized health care service.
+e.g laboratories,  pharmacies, blood bank centers etc.
+
+Synchronization process
+------------------------
+Stand alone facilities such as pharmacies are registered in the regulator systems and are inspected 
+and they start operating. 
+On final inspection, the facilities are pushed to MFL via the API:
+
+
+To push the details to MFL ``POST`` to ``api/facilities/facilities/`` a payload similar to the one below:
+
+.. code-block:: javascript
+
+     {   
+        "owner": "c826ca77-6bb0-45c5-81c4-50c422d4955e",       
+        "name": "Rehema Pharmacy (Bahati)",
+        "official_name": "Rehema Pharmacy",
+        "registration_number": "PBB 12444",
+        "open_whole_day": true,
+        "open_public_holidays": false,
+        "open_weekends": true,
+        "open_late_night": false,
+        "plot_number": "LR/14414/KEN",
+        "location_desc": "Along Chiefs Road",
+        "facility_type": "83def692-d9ee-4e69-8689-09c56acb9b29",
+        "operation_status": "d498f6bb-af28-435d-b83c-39e81421a83c",
+        "ward": "0b394c71-3cf6-4317-a11c-0c392a7d7531",
+        "regulatory_body": "c4187274-361f-4d3a-8e76-ba610e83f2dd",
+        "town": "ebc94bf6-8cae-4fbf-8a94-3f0e292e3cf1"
+    }
+
+
+The fields in the payload are explained below:
+
+===================== ============= ========================================================
+Field                 Required      Explanation
+===================== ============= ========================================================
+Name                   Yes          This is the unique name of a facility e.g Agha Khan Medical Centre(Mombasa)
+Official Name          Yes          This is the name of the facility e.g Agha Khan medical centre
+open whole day         No           Indicates whether a facility is open 24 hours a day
+Open Public Holidays   No           Indicates whether a facility is open on public holidays
+Open Late Night        No           Indicates whether a facility is open late night
+Open Weekends          No           Indicates whether a facility is open on weekends
+Plot Number            No           The plot number of where the facility is located
+Location desc          No           A description on how to access the facility e.g which road to use
+Facility type          Yes          This is the type of the facility <id> of the facility type e.f pharmacy
+Operation Status       Yes          The operation status id e.g Operation Status Id
+Ward                   Yes          The ward ID of where the facility is located
+Regulatory Body        Yes          The regulatory body ID of the facility e.g Pharmacy and Poisons Board id
+Town                   Yes          The id of the town or health centre where the facility is located
+Regisration_number     Yes          This the registration number as assigned by the regulator
+ward                   Yes          This is the code of the county where the facility is located
+Owner                  Yes          The id of the owner as the per the MFL
+Facility_type          Yes          The id of the facility type as per the MFL
+===================== ============= ========================================================
+
+Sample Expected Response:
+
+.. code-block:: javascript
+
+    {
+        "id": "05119042-11da-4a75-8955-3b87a1be4941",
+        "regulatory_status_name": "Pending License",
+        "facility_type_name": "Pharmacy",
+        "owner_name": "Private Practice - Unspecified",
+        "owner_type_name": "Private Institutions and Private Practice",
+        "owner_type": "514eb80b-0450-400f-9daf-dc09f78ba737",
+        "operation_status_name": "Operational",
+        "county": "NAIROBI",
+        "constituency": "MATHARE",
+        "ward_name": "KIAMAIKO",
+        "average_rating": 0,
+        "facility_services": [],
+        "is_approved": null,
+        "has_edits": false,
+        "latest_update": null,
+        "regulatory_body_name": "Pharmacy & Poisons Board",
+        "owner": "c826ca77-6bb0-45c5-81c4-50c422d4955e",
+        "date_requested": "2015-10-27T07:50:02.989Z",
+        "date_approved": null,
+        "latest_approval_or_rejection": null,
+        "created": "2015-10-27T07:50:02.989140Z",
+        "updated": "2015-10-27T07:50:02.989144Z",
+        "deleted": false,
+        "active": true,
+        "search": null,
+        "name": "Rehema Pharmacy (Bahati)",
+        "official_name": "Rehema Pharmacy",
+        "code": 100000,
+        "registration_number": "PBB 12444",
+        "abbreviation": null,
+        "description": null,
+        "number_of_beds": 0,
+        "number_of_cots": 0,
+        "open_whole_day": true,
+        "open_public_holidays": false,
+        "open_weekends": true,
+        "open_late_night": false,
+        "is_classified": false,
+        "is_published": false,
+        "attributes": null,
+        "regulated": false,
+        "approved": false,
+        "rejected": false,
+        "bank_name": null,
+        "branch_name": null,
+        "bank_account": null,
+        "facility_catchment_population": null,
+        "nearest_landmark": null,
+        "plot_number": "LR/14414/KEN",
+        "location_desc": "Along Chiefs Road",
+        "closed": false,
+        "closed_date": null,
+        "closing_reason": null,
+        "created_by": 4,
+        "updated_by": 4,
+        "facility_type": "83def692-d9ee-4e69-8689-09c56acb9b29",
+        "operation_status": "d498f6bb-af28-435d-b83c-39e81421a83c",
+        "ward": "0b394c71-3cf6-4317-a11c-0c392a7d7531",
+        "parent": null,
+        "regulatory_body": "c4187274-361f-4d3a-8e76-ba610e83f2dd",
+        "keph_level": null,
+        "sub_county": null,
+        "town": "ebc94bf6-8cae-4fbf-8a94-3f0e292e3cf1",
+        "contacts": []
+    }
+
+.. note::
+    The MFL code assigned to the facility is in the response data (The field is ``code``).
+
+
+Expected Response Code:
+
+    ``HTTP_201_CREATED``
+
+
+
+It is clear that there is data that needs to be mapped between MFL and the regulators in order for this work.
+
+The data includes:
+    #. Wards
+    #. Owners
+    #. Operation status
+    #. Facility types
+    #. Regulatory Bodies
+    #. Towns
+
+
+All the above data is explained under the :doc:`08_support_resources` section of the documentation.
+
 
 .. toctree::
     :maxdepth: 2
