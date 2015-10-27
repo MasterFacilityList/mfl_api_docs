@@ -318,23 +318,22 @@ The fields in the payload are explained below:
 ===================== ============= ========================================================
 Field                 Required      Explanation
 ===================== ============= ========================================================
-Name                   Yes          This is the unique name of a facility e.g Agha Khan Medical Centre(Mombasa)
-Official Name          Yes          This is the name of the facility e.g Agha Khan medical centre
-Open Whole Day         No           Indicates whether a facility is open 24 hours a day
-Open Public Holidays   No           Indicates whether a facility is open on public holidays
-Open Late Night        No           Indicates whether a facility is open late night
-Open Weekends          No           Indicates whether a facility is open on weekends
-Plot Number            No           The plot number of where the facility is located
-Location Desc          No           A description on how to access the facility e.g which road to use
-Facility Type          Yes          This is the type of the facility <id> of the facility type e.f pharmacy
-Operation Status       Yes          The operation status id e.g Operation Status Id
-Ward                   Yes          The ward ID of where the facility is located
-Regulatory Body        Yes          The regulatory body ID of the facility e.g Pharmacy and Poisons Board id
-Town                   Yes          The id of the town or health centre where the facility is located
-Registration Number     Yes          This the registration number as assigned by the regulator
+name                   Yes          This is the unique name of a facility e.g Agha Khan Medical Centre(Mombasa)
+official_name          Yes          This is the name of the facility e.g Agha Khan medical centre
+open_whole_day         No           Indicates whether a facility is open 24 hours a day
+open_public_holidays   No           Indicates whether a facility is open on public holidays
+open_late_night        No           Indicates whether a facility is open late night
+open_weekends          No           Indicates whether a facility is open on weekends
+plot_mumber            No           The plot number of where the facility is located
+location_desc          No           A description on how to access the facility e.g which road to use
+facility_type          Yes          This is the type of the facility <id> of the facility type e.f pharmacy
+operation_status       Yes          The operation status id e.g Operation Status Id
+ward                   Yes          The ward ID of where the facility is located
+regulatory_body        Yes          The regulatory body ID of the facility e.g Pharmacy and Poisons Board id
+town                   Yes          The id of the town or health centre where the facility is located
+registration_number    Yes          This the registration number as assigned by the regulator
 ward                   Yes          This is the code of the county where the facility is located
-Owner                  Yes          The id of the owner as the per the MFL
-Facility Type          Yes          The id of the facility type as per the MFL
+owner                  Yes          The id of the owner as the per the MFL
 ===================== ============= ========================================================
 
 Sample Expected Response:

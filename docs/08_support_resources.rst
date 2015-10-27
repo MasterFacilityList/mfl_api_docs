@@ -274,7 +274,7 @@ known contact, although the use cases for that are more limited.
 
 Facility Operation Status
 -------------------------
-Operation Status is the what indicates whether a facility is operation or non operational.
+Operation Status is what indicates whether a facility is operation or non operational.
 
 Listing Available Operation Status
 ++++++++++++++++++++++++++++++++++
