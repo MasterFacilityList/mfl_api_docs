@@ -320,21 +320,21 @@ Field                 Required      Explanation
 ===================== ============= ========================================================
 Name                   Yes          This is the unique name of a facility e.g Agha Khan Medical Centre(Mombasa)
 Official Name          Yes          This is the name of the facility e.g Agha Khan medical centre
-open whole day         No           Indicates whether a facility is open 24 hours a day
+Open Whole Day         No           Indicates whether a facility is open 24 hours a day
 Open Public Holidays   No           Indicates whether a facility is open on public holidays
 Open Late Night        No           Indicates whether a facility is open late night
 Open Weekends          No           Indicates whether a facility is open on weekends
 Plot Number            No           The plot number of where the facility is located
-Location desc          No           A description on how to access the facility e.g which road to use
-Facility type          Yes          This is the type of the facility <id> of the facility type e.f pharmacy
+Location Desc          No           A description on how to access the facility e.g which road to use
+Facility Type          Yes          This is the type of the facility <id> of the facility type e.f pharmacy
 Operation Status       Yes          The operation status id e.g Operation Status Id
 Ward                   Yes          The ward ID of where the facility is located
 Regulatory Body        Yes          The regulatory body ID of the facility e.g Pharmacy and Poisons Board id
 Town                   Yes          The id of the town or health centre where the facility is located
-Regisration_number     Yes          This the registration number as assigned by the regulator
+Registration Number     Yes          This the registration number as assigned by the regulator
 ward                   Yes          This is the code of the county where the facility is located
 Owner                  Yes          The id of the owner as the per the MFL
-Facility_type          Yes          The id of the facility type as per the MFL
+Facility Type          Yes          The id of the facility type as per the MFL
 ===================== ============= ========================================================
 
 Sample Expected Response:
