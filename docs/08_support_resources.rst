@@ -271,5 +271,151 @@ known contact, although the use cases for that are more limited.
     **reliable** APIs. In RESTful APIs, nested serialization / deserialization
     is a massive pain. We'd rather not deal with it.
 
+
+Facility Operation Status
+-------------------------
+Operation Status is what indicates whether a facility is operation or non operational.
+
+Listing Available Operation Status
+++++++++++++++++++++++++++++++++++
+To list all the available operation status in MFL do a ``GET`` to the URL ``api/facilities/facility_status/``
+
+Sample Expected Response data:
+
+.. code-block:: javascript
+
+    {
+        "count": 4,
+        "next": null,
+        "previous": null,
+        "page_size": 30,
+        "current_page": 1,
+        "total_pages": 1,
+        "start_index": 1,
+        "end_index": 4,
+        "results": [
+            {
+                "id": "7e5cfa76-7564-4263-89d6-c4e30ce64b39",
+                "created": "2015-09-28T08:59:03.979532Z",
+                "updated": "2015-09-28T08:59:03.979567Z",
+                "deleted": false,
+                "active": true,
+                "search": null,
+                "name": "Unknown",
+                "description": null,
+                "created_by": 1,
+                "updated_by": 1
+            },
+            {
+                "id": "c3b2f2f3-2cfa-4203-bc92-476f63069377",
+                "created": "2015-09-28T08:59:03.973257Z",
+                "updated": "2015-09-28T08:59:03.973276Z",
+                "deleted": false,
+                "active": true,
+                "search": null,
+                "name": "Pending Opening",
+                "description": null,
+                "created_by": 1,
+                "updated_by": 1
+            },
+            {
+                "id": "c879932e-4763-420a-9a87-adddb874b662",
+                "created": "2015-09-28T08:59:03.967246Z",
+                "updated": "2015-09-28T08:59:03.967266Z",
+                "deleted": false,
+                "active": true,
+                "search": null,
+                "name": "Not-Operational",
+                "description": null,
+                "created_by": 1,
+                "updated_by": 1
+            },
+            {
+                "id": "d498f6bb-af28-435d-b83c-39e81421a83c",
+                "created": "2015-09-28T08:59:03.957568Z",
+                "updated": "2015-09-28T08:59:03.957590Z",
+                "deleted": false,
+                "active": true,
+                "search": null,
+                "name": "Operational",
+                "description": null,
+                "created_by": 1,
+                "updated_by": 1
+            }
+        ]
+    }
+
+Expected Response Code:
+    ``HTPP_200_OK``
+
+Creating an Operation Status
+++++++++++++++++++++++++++++
+To add a new operation status ``POST`` to the URL ``api/facilities/facility_status/`` a payload similar to the one shown below:
+
+.. code-block:: javascript
+    
+    {
+        "name": "Test Status",
+        "description": "This is just for testing"
+    }
+
+
+Sample Expected Response data:
+    
+.. code-block:: javascript
+
+    {
+        "id": "4a67f0f4-bc3a-461f-ad26-4aad885482f4",
+        "created": "2015-10-27T08:19:55.764752Z",
+        "updated": "2015-10-27T08:19:55.764767Z",
+        "deleted": false,
+        "active": true,
+        "search": null,
+        "name": "Test Status",
+        "description": "This is just for testing",
+        "created_by": 4,
+        "updated_by": 4
+    }
+
+
+
+Expected Response Code:
+    ``HTTP_201_CREATED``
+
+
+Updating a single Operation Status
++++++++++++++++++++++++++++++++++++
+To update a single operation status do a ``PATCH`` to the URL ``api/facilities/facility_status/<facility_status_id>/``
+
+For example to update operation status we just created we would do a PATCH to the URL  ``api/facilities/facility_status/4a67f0f4-bc3a-461f-ad26-4aad885482f4/`` with a payload similar to the one below:
+
+.. code-block:: javascript
+
+    {
+        "name": "Test Status edited"
+    }
+
+
+Sample Expected Response data
+
+.. code-block:: javascript
+    
+    {
+        "id": "4a67f0f4-bc3a-461f-ad26-4aad885482f4",
+        "created": "2015-10-27T08:19:55.764752Z",
+        "updated": "2015-10-27T08:19:55.764767Z",
+        "deleted": false,
+        "active": true,
+        "search": null,
+        "name": "Test Status edited",
+        "description": "This is just for testing",
+        "created_by": 4,
+        "updated_by": 4
+    }
+
+Expected Response code:
+    ``HTTP_200_OK``
+
+
 .. toctree::
     :maxdepth: 2
