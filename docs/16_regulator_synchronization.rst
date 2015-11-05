@@ -330,9 +330,8 @@ facility_type          Yes          This is the type of the facility <id> of the
 operation_status       Yes          The operation status id e.g Operation Status Id
 ward                   Yes          The ward ID of where the facility is located
 regulatory_body        Yes          The regulatory body ID of the facility e.g Pharmacy and Poisons Board id
-town                   Yes          The id of the town or health centre where the facility is located
+town                   No          The id of the town or health centre where the facility is located
 registration_number    Yes          This the registration number as assigned by the regulator
-ward                   Yes          This is the code of the county where the facility is located
 owner                  Yes          The id of the owner as the per the MFL
 ===================== ============= ========================================================
 
