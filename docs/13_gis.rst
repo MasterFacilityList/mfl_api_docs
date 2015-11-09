@@ -195,6 +195,35 @@ The output is similar to that of the county boundary endpoints, with the
 following differences: as the smallest administrative unit, a ward does not
 embed the coordinates of any other administrative unit.
 
+Lookup administrative units
+++++++++++++++++++++++++++++
+It is possible to determine the location of a facility using it's coordinates
+by sending a ``POST`` to ``/api/mfl_gis/ikowapi/`` with the *longitude* and *latitude*.
+
+.. code-block:: javascript
+
+    {
+        "longitude": 1.3213,
+        "latitude": 4.53434
+    }
+
+The response, if successful, shall provide the ward, constituency and county ids and names.
+
+.. code-block:: javascript
+
+    {
+        "ward": "<ward id>",
+        "ward_name": "<ward name>",
+        "ward_code": "<ward code>",
+        "constituency": "<constituency id>",
+        "constituency_name": "<constituency name>",
+        "constituency_code": "<constituency code>",
+        "county": "<id of the county>",
+        "county_name": "<county name>",
+        "county_code": "<county code>"
+    }
+
+
 Facility Coordinates
 -----------------------
 The facility coordinates resources can be found at ``/api/gis/coordinates/``.
