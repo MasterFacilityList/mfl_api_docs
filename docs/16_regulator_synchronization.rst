@@ -1,14 +1,14 @@
 Regulator Synchronization
-========================== 
+==========================
 Regulator synchronization is divided into two sections:
     #. :ref:`part_1-label`
-    #. :ref:`part_2-label` 
+    #. :ref:`part_2-label`
 
 .. _part_1-label:
 
 Part 1: Attached Facilities Synchronization
 +++++++++++++++++++++++++++++++++++++++++++
-Attached facilities are those facilities that offer specialized health services 
+Attached facilities are those facilities that offer specialized health services
 such as pharmaceutical services, laboratory services, opthalmology services, physiotherapy
 services etc besides offering other general health services.
 
@@ -285,8 +285,8 @@ e.g laboratories,  pharmacies, blood bank centers etc.
 
 Synchronization process
 ------------------------
-Stand alone facilities such as pharmacies are registered in the regulator systems and are inspected 
-and they start operating. 
+Stand alone facilities such as pharmacies are registered in the regulator systems and are inspected
+and they start operating.
 On final inspection, the facilities are pushed to MFL via the API:
 
 
@@ -294,8 +294,8 @@ To push the details to MFL ``POST`` to ``api/facilities/facilities/`` a payload 
 
 .. code-block:: javascript
 
-     {   
-        "owner": "c826ca77-6bb0-45c5-81c4-50c422d4955e",       
+     {
+        "owner": "c826ca77-6bb0-45c5-81c4-50c422d4955e",
         "name": "Rehema Pharmacy (Bahati)",
         "official_name": "Rehema Pharmacy",
         "registration_number": "PBB 12444",
@@ -315,25 +315,25 @@ To push the details to MFL ``POST`` to ``api/facilities/facilities/`` a payload 
 
 The fields in the payload are explained below:
 
-===================== ============= ========================================================
-Field                 Required      Explanation
-===================== ============= ========================================================
-name                   Yes          This is the unique name of a facility e.g Agha Khan Medical Centre(Mombasa)
-official_name          Yes          This is the name of the facility e.g Agha Khan medical centre
-open_whole_day         No           Indicates whether a facility is open 24 hours a day
-open_public_holidays   No           Indicates whether a facility is open on public holidays
-open_late_night        No           Indicates whether a facility is open late night
-open_weekends          No           Indicates whether a facility is open on weekends
-plot_mumber            No           The plot number of where the facility is located
-location_desc          No           A description on how to access the facility e.g which road to use
-facility_type          Yes          This is the type of the facility <id> of the facility type e.f pharmacy
-operation_status       Yes          The operation status id e.g Operation Status Id
-ward                   Yes          The ward ID of where the facility is located
-regulatory_body        Yes          The regulatory body ID of the facility e.g Pharmacy and Poisons Board id
-town                   No          The id of the town or health centre where the facility is located
-registration_number    Yes          This the registration number as assigned by the regulator
-owner                  Yes          The id of the owner as the per the MFL
-===================== ============= ========================================================
+====================== ============= =============================================================================
+ Field                  Required       Explanation
+====================== ============= =============================================================================
+ name                   Yes           This is the unique name of a facility e.g Agha Khan Medical Centre(Mombasa)
+ official_name          Yes           This is the name of the facility e.g Agha Khan medical centre
+ open_whole_day         No            Indicates whether a facility is open 24 hours a day
+ open_public_holidays   No            Indicates whether a facility is open on public holidays
+ open_late_night        No            Indicates whether a facility is open late night
+ open_weekends          No            Indicates whether a facility is open on weekends
+ plot_mumber            No            The plot number of where the facility is located
+ location_desc          No            A description on how to access the facility e.g which road to use
+ facility_type          Yes           This is the type of the facility <id> of the facility type e.f pharmacy
+ operation_status       Yes           The operation status id e.g Operation Status Id
+ ward                   Yes           The ward ID of where the facility is located
+ regulatory_body        Yes           The regulatory body ID of the facility e.g Pharmacy and Poisons Board id
+ town                   No            The id of the town or health centre where the facility is located
+ registration_number    Yes           This the registration number as assigned by the regulator
+ owner                  Yes           The id of the owner as the per the MFL
+====================== ============= =============================================================================
 
 Sample Expected Response:
 
