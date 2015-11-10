@@ -434,19 +434,414 @@ All the above data is explained under the :doc:`08_support_resources` section of
 
 Pushing a Facility Geo-location Details
 _______________________________________
-TODO
+To push the geo-location details of a facility do a ``POST`` to the ``URL``  ``api/gis/facility_coordinates/``
+with a payload similar to the one
+shown below:
+
+.. code-block:: javascript
+
+    {
+        "source":"da488b76-2581-40d5-9377-3550e28cfb77", // The id of the source of the geo-code
+        "method":"4e1f460f-db3e-4e67-a906-2afc789f8f3a", // The id of the method used to obtain the geo-code
+        "collection_date":"2015-10-31T21:00:00.000Z", //Date when the geocode was obtained
+        "facility":"da3c4efe-57df-4d65-aa29-b6eb6719e469", // The facility id to which the geo-code belongs
+
+        "coordinates": {
+            "type":"Point",
+            "coordinates":[
+
+                36.87593521921288, // longitude
+                -1.254507474965246 // latitude
+
+            ]
+
+        }
+
+    }
+
+Expected Response Code
+    ``HTTP_201_CREATED``
+
+
+Sample Expected Response
+
+.. code-block:: javascript
+
+    {
+        "id":"c0d862d4-aa86-4cf0-9f10-8ec83b764321",
+        "source_name":"DHMT Nakuru","method_name":"Taken with GPS Device",
+        "created":"2015-11-10T10:45:01.731129Z",
+        "updated":"2015-11-10T10:45:01.731141Z","deleted":false,
+        "active":true,"search":null,
+
+        "coordinates":{
+            "type":"Point",
+            "coordinates":[
+
+                36.87593521921288,
+                -1.254507474965246
+
+            ]
+
+        },
+
+        "collection_date":"2015-10-31T21:00:00Z",
+        "created_by":13,
+        "updated_by":13,
+        "facility":"da3c4efe-57df-4d65-aa29-b6eb6719e469",
+        "source":"da488b76-2581-40d5-9377-3550e28cfb77",
+        "method":"4e1f460f-db3e-4e67-a906-2afc789f8f3a"
+
+    }
+
+After obtaining the id from the response data do a ``PATCH`` to the
+``URL`` ``api/facilities/facilities/<facility_id>`` with a payload similar to the one shown below:
+
+.. code-block:: javascript
+
+    {
+        "coordinates": "c0d862d4-aa86-4cf0-9f10-8ec83b764321" // the id obtained from the response data above
+
+    }
+
+
+Expected Response Code:
+    ``HTTP_204_NO_CONTENT``
+
+There is no response data.
+
+.. note::
+    #. The **geo-code methods** ids are obtained from the endpoint ``api/gis/geo_code_methods/``
+
+    #. The **geo-code sources** ids are obtained from the endpoint ``api/gis/geo_code_sources/``
+
+    #. Watch out for the order of the coordinates; the longitude comes before the latitude otherwise
+       the geocodes will  not validate.
+
 
 Pushing a Facility Contacts
 ___________________________
-TODO
+To push a facility's contacts do a ``PATCH`` to the ``URL`` ``api/facilities/facilities/<facility_id>``
+with a payload similar to the one shown below:
+
+.. code-block:: javascript
+
+    {
+        "contacts":[
+            {
+                "contact_type":"17287e65-021f-4319-92fb-e032e2c3de72", // the contact type id
+                "contact":"0200046" // the actual contact
+
+            },
+
+            {
+                "contact_type":"9417c555-e36f-4502-941e-9a9943c534d5",
+                "contact":"1414141241"
+
+            }
+
+        ]
+
+    }
+
+Expected Response code:
+    ``HTTP_204_NO_CONTENT``
+
+There is no response data
+
+..  note::
+    The **contact types** ids can be obtained from the endpoint ``api/common/contact_types/``
+
 
 Pushing a Facility's Officer-In-Charge
 ______________________________________
-TODO
+To push the details of a facility's officer-in-charge to a ``PATCH`` to the ``URL``
+ ``api/facilities/facilities/<facility_id>`` with a payload similar to the one shown below:
+
+.. code-block:: javascript
+
+    {
+        "officer_in_charge":{
+            "name":"Alex Aluoch",
+            "reg_no":"P15/3525/5235",
+
+            "contacts":[
+                {
+                    "type":"17287e65-021f-4319-92fb-e032e2c3de72", // the contact type id
+                    "contact":"020133555" // the actual contact
+
+                },
+
+                {
+                    "type":"d7c0405c-1f69-4d1d-9895-24e6af997429",
+                    "contact":"0756456288"
+
+                }
+
+            ],
+
+            "title":"ba36158a-0d61-4014-aa55-111425b06775" // the job title id
+
+        }
+
+    }
+
+
+Expected Response code:
+    ``HTTP_204_NO_CONTENT``
+
+There is no response data
+
+
+.. note::
+    To obtain the **job-titles** go to the ``URL`` ``api/facilities/job_titles/``
 
 Pushing a Facility's Services
 _____________________________
-TODO
+
+To push a facility's services do a ``PATCH`` to the ``URL`` ``api/facilities/facilities/<facility_id>``
+with a payload similar to the one shown below:
+
+.. code-block:: javascript
+
+    {
+        "services":[
+            {
+                "service":"59c4e20e-eb00-427c-8533-61719b0db77d" // the service id
+
+            },
+
+            {
+                "service":"78aac8b6-c2d7-4204-b074-8b83fb1ef070", // the service id
+                "option":"888c5b48-2334-436d-a806-3a57e1933e8b" // the option id
+
+            },
+
+            {
+                "service":"576c9964-ee5a-4a6f-b1fd-32064d76bb77" // the service id
+
+            }
+
+        ]
+
+    }
+
+Expected Response code:
+    ``HTTP_204_NO_CONTENT``
+
+There is no response data
+
+
+.. note::
+    **Services in MFL**
+
+    All the service in MFL can be obtained from the ``URL`` ``api/facilities/services/``
+
+    It is important to note that there are two types of services in the MFL:
+
+        a). Services with options
+
+        b). Services without options
+
+    For the services that do not have options only the service id is posted and when the service has an option
+    such as basic or comprehensive the service id is posted together with the option id as the payload above shows.
+
+    Each service from the endpoint ``api/facilities/services/`` comes together with its **group** and from the group object the **options** can be obtained.
+
+    To list all the option groups do a ``GET`` to ``api/facilities/option_groups/``
+    and to get the details of one single option group do a ``GET`` to ``api/facilities/option_groups/<option_group_id>``
+
+
+Once details of a facility have been pushed to MFL, all the facility details can be obtained
+through doing a ``GET`` to ``api/facilities/facilities/<facility_id>``
+
+For example a ``GET`` to ``api/facilities/facilities/da3c4efe-57df-4d65-aa29-b6eb6719e469/``
+would result in the details of the facility that was created and updated in the sample payloads above.
+
+.. code-block:: javascript
+
+    {
+        "id": "da3c4efe-57df-4d65-aa29-b6eb6719e469",
+        "regulatory_status_name": "Pending License",
+        "facility_type_name": "Pharmacy",
+        "owner_name": "Private Practice - Unspecified",
+        "owner_type_name": "Private Institutions and Private Practice",
+        "owner_type": "2b8b031e-8d5a-47eb-b89c-a63d11e2b70a",
+        "operation_status_name": "Operational",
+        "county": "NAIROBI",
+        "constituency": "MATHARE",
+        "ward_name": "KIAMAIKO",
+        "average_rating": 0.0,
+
+        "facility_services": [
+            {
+                "average_rating": 0.0,
+                "category_id": "edd7631d-b2f3-4008-9c76-e3abb68a547d",
+                "number_of_ratings": 0,
+                "option": null,
+                "service_name": "Short Term FP",
+                "option_name": "Yes",
+                "service_id": "576c9964-ee5a-4a6f-b1fd-32064d76bb77",
+                "service_code": 1012,
+                "id": "f053976f-3b0a-42ce-8b92-4695cce1bbf0",
+                "category_name": "Family Planning"
+
+            },
+
+            {
+                "average_rating": 0.0,
+                "category_id": "edd7631d-b2f3-4008-9c76-e3abb68a547d",
+                "number_of_ratings": 0,
+                "option": "888c5b48-2334-436d-a806-3a57e1933e8b",
+                "service_name": "Permanent FP",
+                "option_name": "Level 3",
+                "service_id": "78aac8b6-c2d7-4204-b074-8b83fb1ef070",
+                "service_code": 1051,
+                "id": "bbb2ce77-5537-43c5-9364-66c307b21c6a",
+                "category_name": "Family Planning"
+
+            },
+
+            {
+                "average_rating": 0.0,
+                "category_id": "edd7631d-b2f3-4008-9c76-e3abb68a547d",
+                "number_of_ratings": 0,
+                "option": null,
+                "service_name": "Long Term FP",
+                "option_name": "Yes",
+                "service_id": "59c4e20e-eb00-427c-8533-61719b0db77d",
+                "service_code": 1013,
+                "id": "985d94c3-409b-4a5a-b53d-f9589d338d68",
+                "category_name": "Family Planning"
+
+            }
+
+        ],
+
+        "is_approved": null,
+        "has_edits": false,
+        "latest_update": null,
+        "regulatory_body_name": "Pharmacy & Poisons Board",
+        "owner": "af7f2be2-3454-4ba8-ae01-d24c05cfb382",
+        "date_requested": "2015-11-10T10:27:53.932Z",
+        "date_approved": null,
+        "latest_approval_or_rejection": null,
+        "sub_county_name": null,
+
+        "facility_contacts": [
+            {
+                "contact_type_name": "FAX",
+                "contact": "1414141241",
+                "id": "341c5ea6-9d85-47f2-b635-12ee013c7da7",
+                "contact_id": "e729ea90-2dde-4361-95f2-fd94c059f56b"
+
+            },
+
+            {
+                "contact_type_name": "LANDLINE",
+                "contact": "0200046",
+                "id": "e0a85e74-47fa-4112-aa76-fd9dccd2fb89",
+                "contact_id": "95395096-0a61-4b5b-88d8-123402eb86ba"
+
+            }
+
+        ],
+        "coordinates": "c0d862d4-aa86-4cf0-9f10-8ec83b764321",
+        "latest_approval": null,
+
+        "boundaries": {
+            "county_boundary": "d89fad95-0f7d-4044-87ec-f8a7ad9fcac2",
+            "ward_boundary": "0f8d1126-d978-4f3e-afe8-e46635ddc0fe",
+            "constituency_boundary": "0f0ecac3-fb36-450d-bd93-efb8558a1a1e"
+
+        },
+
+        "service_catalogue_active": true,
+        "facility_units": [],
+
+        "officer_in_charge": {
+            "name": "Alex Aluoch",
+
+            "contacts": [
+                {
+                    "contact_type_name": "MOBILE",
+                    "officer_contact_id": "fe69052a-4466-45ce-ab64-80d7f7c1eef8",
+                    "type": "d7c0405c-1f69-4d1d-9895-24e6af997429",
+                    "contact_id": "edb51ac8-71e2-477a-852b-f90ff3152973",
+                    "contact": "0756456288"
+
+                },
+
+                {
+                    "contact_type_name": "LANDLINE",
+                    "officer_contact_id": "ae3cbec5-f9e5-4ec0-9465-af5f13773256",
+                    "type": "17287e65-021f-4319-92fb-e032e2c3de72",
+                    "contact_id": "d8f51a01-a0a5-49d8-9be9-0ae0a4c604cc",
+                    "contact": "020133555"
+
+                }
+
+            ],
+
+            "id_number": null,
+            "reg_no": "P15/3525/5235",
+            "title": "ba36158a-0d61-4014-aa55-111425b06775",
+            "title_name": "Medical Superintendant"
+
+        },
+
+        "town_name": "Bahati",
+        "keph_level_name": null,
+        "created": "2015-11-10T10:27:53.932878Z",
+        "updated": "2015-11-10T10:27:53.932886Z",
+        "deleted": false,
+        "active": true,
+        "search": null,
+        "name": "Rehema Pharmacy (Bahati)",
+        "official_name": "Rehema Pharmacy",
+        "code": 100000,
+        "registration_number": "PBB 12444",
+        "abbreviation": null,
+        "description": null,
+        "number_of_beds": 0,
+        "number_of_cots": 0,
+        "open_whole_day": true,
+        "open_public_holidays": false,
+        "open_weekends": true,
+        "open_late_night": false,
+        "is_classified": false,
+        "is_published": false,
+        "regulated": false,
+        "approved": false,
+        "rejected": false,
+        "bank_name": null,
+        "branch_name": null,
+        "bank_account": null,
+        "facility_catchment_population": null,
+        "nearest_landmark": null,
+        "plot_number": "LR/14414/KEN",
+        "location_desc": "Along Chiefs Road",
+        "closed": false,
+        "closed_date": null,
+        "closing_reason": null,
+        "created_by": 4,
+        "updated_by": 4,
+        "facility_type": "6bbfc198-23f0-4310-9170-24ac05e2e49e",
+        "operation_status": "3f5634c7-5a47-4e1d-b2f5-8e9b2308acf0",
+        "ward": "b530b7ed-a110-431f-9a19-847eb706792d",
+        "parent": null,
+        "regulatory_body": "e4ae432e-8a0a-402c-ab6c-1c9033102bb5",
+        "keph_level": null,
+        "sub_county": null,
+        "town": "ee724c13-abfe-44cb-98ce-9ec36a1e97a9",
+
+        "contacts": [
+            "e729ea90-2dde-4361-95f2-fd94c059f56b",
+            "95395096-0a61-4b5b-88d8-123402eb86ba"
+
+        ]
+
+    }
 
 .. toctree::
     :maxdepth: 2
