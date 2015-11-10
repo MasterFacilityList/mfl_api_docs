@@ -289,13 +289,14 @@ Stand alone facilities such as pharmacies are registered in the regulator system
 and they start operating.
 On final inspection, the facilities are pushed to MFL via the API:
 
-
+Pushing a Facility Basic Details
+________________________________
 To push the details to MFL ``POST`` to ``api/facilities/facilities/`` a payload similar to the one below:
 
 .. code-block:: javascript
 
      {
-        "owner": "c826ca77-6bb0-45c5-81c4-50c422d4955e",
+        "owner": "af7f2be2-3454-4ba8-ae01-d24c05cfb382",
         "name": "Rehema Pharmacy (Bahati)",
         "official_name": "Rehema Pharmacy",
         "registration_number": "PBB 12444",
@@ -305,11 +306,11 @@ To push the details to MFL ``POST`` to ``api/facilities/facilities/`` a payload 
         "open_late_night": false,
         "plot_number": "LR/14414/KEN",
         "location_desc": "Along Chiefs Road",
-        "facility_type": "83def692-d9ee-4e69-8689-09c56acb9b29",
-        "operation_status": "d498f6bb-af28-435d-b83c-39e81421a83c",
-        "ward": "0b394c71-3cf6-4317-a11c-0c392a7d7531",
-        "regulatory_body": "c4187274-361f-4d3a-8e76-ba610e83f2dd",
-        "town": "ebc94bf6-8cae-4fbf-8a94-3f0e292e3cf1"
+        "facility_type": "6bbfc198-23f0-4310-9170-24ac05e2e49e",
+        "operation_status": "3f5634c7-5a47-4e1d-b2f5-8e9b2308acf0",
+        "ward": "b530b7ed-a110-431f-9a19-847eb706792d",
+        "regulatory_body": "e4ae432e-8a0a-402c-ab6c-1c9033102bb5",
+        "town": "ee724c13-abfe-44cb-98ce-9ec36a1e97a9"
     }
 
 
@@ -340,12 +341,12 @@ Sample Expected Response:
 .. code-block:: javascript
 
     {
-        "id": "05119042-11da-4a75-8955-3b87a1be4941",
+        "id": "da3c4efe-57df-4d65-aa29-b6eb6719e469",
         "regulatory_status_name": "Pending License",
         "facility_type_name": "Pharmacy",
         "owner_name": "Private Practice - Unspecified",
         "owner_type_name": "Private Institutions and Private Practice",
-        "owner_type": "514eb80b-0450-400f-9daf-dc09f78ba737",
+        "owner_type": "2b8b031e-8d5a-47eb-b89c-a63d11e2b70a",
         "operation_status_name": "Operational",
         "county": "NAIROBI",
         "constituency": "MATHARE",
@@ -356,12 +357,13 @@ Sample Expected Response:
         "has_edits": false,
         "latest_update": null,
         "regulatory_body_name": "Pharmacy & Poisons Board",
-        "owner": "c826ca77-6bb0-45c5-81c4-50c422d4955e",
-        "date_requested": "2015-10-27T07:50:02.989Z",
+        "owner": "af7f2be2-3454-4ba8-ae01-d24c05cfb382",
+        "date_requested": "2015-11-10T10:27:53.932Z",
         "date_approved": null,
         "latest_approval_or_rejection": null,
-        "created": "2015-10-27T07:50:02.989140Z",
-        "updated": "2015-10-27T07:50:02.989144Z",
+        "sub_county_name": null,
+        "created": "2015-11-10T10:27:53.932878Z",
+        "updated": "2015-11-10T10:27:53.932886Z",
         "deleted": false,
         "active": true,
         "search": null,
@@ -395,14 +397,14 @@ Sample Expected Response:
         "closing_reason": null,
         "created_by": 4,
         "updated_by": 4,
-        "facility_type": "83def692-d9ee-4e69-8689-09c56acb9b29",
-        "operation_status": "d498f6bb-af28-435d-b83c-39e81421a83c",
-        "ward": "0b394c71-3cf6-4317-a11c-0c392a7d7531",
+        "facility_type": "6bbfc198-23f0-4310-9170-24ac05e2e49e",
+        "operation_status": "3f5634c7-5a47-4e1d-b2f5-8e9b2308acf0",
+        "ward": "b530b7ed-a110-431f-9a19-847eb706792d",
         "parent": null,
-        "regulatory_body": "c4187274-361f-4d3a-8e76-ba610e83f2dd",
+        "regulatory_body": "e4ae432e-8a0a-402c-ab6c-1c9033102bb5",
         "keph_level": null,
         "sub_county": null,
-        "town": "ebc94bf6-8cae-4fbf-8a94-3f0e292e3cf1",
+        "town": "ee724c13-abfe-44cb-98ce-9ec36a1e97a9",
         "contacts": []
     }
 
@@ -429,6 +431,22 @@ The data includes:
 
 All the above data is explained under the :doc:`08_support_resources` section of the documentation.
 
+
+Pushing a Facility Geo-location Details
+_______________________________________
+TODO
+
+Pushing a Facility Contacts
+___________________________
+TODO
+
+Pushing a Facility's Officer-In-Charge
+______________________________________
+TODO
+
+Pushing a Facility's Services
+_____________________________
+TODO
 
 .. toctree::
     :maxdepth: 2
