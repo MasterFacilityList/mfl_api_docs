@@ -9,6 +9,12 @@ key dependencies can be installed with:
     sudo apt-get install postgresql binutils postgis gdal-bin libproj-dev
     libgeoip1 graphviz libgraphviz-dev
 
+To build lxml on Debian 8 you have to install:
+
+::
+
+    sudo apt-get install libxml2-dev libxslt-dev
+
 **You may need to install distribution specific packages** e.g on Ubuntu 14.04
 with the default PosgreSQL 9.3:
 
